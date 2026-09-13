@@ -1,0 +1,148 @@
+{
+  "users": [
+    {
+      "id": "USR-101",
+      "username": "admin@happypaws.com",
+      "password": "admin123",
+      "name": "Sarah Jenkins",
+      "role": "Shelter Administrator"
+    },
+    {
+      "id": "USR-102",
+      "username": "staff@happypaws.com",
+      "password": "staff123",
+      "name": "Alex Rivera",
+      "role": "Care Coordinator"
+    }
+  ],
+  "pets": [
+    {
+      "id": "PET-1001",
+      "name": "Buddy",
+      "species": "Dog",
+      "breed": "Golden Retriever",
+      "age": "2.5 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Available",
+      "notes": "Friendly, playful, loves swimming and retrieving tennis balls.",
+      "createdAt": "2026-06-15T10:30:00.000Z"
+    },
+    {
+      "id": "PET-1002",
+      "name": "Luna",
+      "species": "Cat",
+      "breed": "Siamese",
+      "age": "1 Year",
+      "gender": "Female",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Calm temperament, affection-seeking, gentle with kids.",
+      "createdAt": "2026-05-10T14:20:00.000Z"
+    },
+    {
+      "id": "PET-1003",
+      "name": "Milo",
+      "species": "Dog",
+      "breed": "French Bulldog",
+      "age": "3 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Pending",
+      "notes": "Very energetic, fully house-trained, enjoys short walks.",
+      "createdAt": "2026-07-01T09:15:00.000Z"
+    },
+    {
+      "id": "PET-1004",
+      "name": "Bella",
+      "species": "Cat",
+      "breed": "Maine Coon",
+      "age": "6 Months",
+      "gender": "Female",
+      "vaccinated": false,
+      "adoptionStatus": "Available",
+      "notes": "Fluffy, quiet kitten, scheduled for final vaccine booster next week.",
+      "createdAt": "2026-07-12T11:45:00.000Z"
+    },
+    {
+      "id": "PET-1005",
+      "name": "Charlie",
+      "species": "Rabbit",
+      "breed": "Holland Lop",
+      "age": "1.5 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Available",
+      "notes": "Gentle rabbit, accustomed to indoor roaming and litter box trained.",
+      "createdAt": "2026-07-18T16:00:00.000Z"
+    },
+    {
+      "id": "PET-1006",
+      "name": "Max",
+      "species": "Dog",
+      "breed": "German Shepherd",
+      "age": "4 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Obedient, trained guard dog, adopted by a loving farm family.",
+      "createdAt": "2026-04-02T08:00:00.000Z"
+    },
+    {
+      "id": "PET-1007",
+      "name": "Daisy",
+      "species": "Bird",
+      "breed": "Cockatiel",
+      "age": "8 Months",
+      "gender": "Female",
+      "vaccinated": true,
+      "adoptionStatus": "Pending",
+      "notes": "Whistles melody tunes, social and comfortable handling.",
+      "createdAt": "2026-07-25T13:10:00.000Z"
+    },
+    {
+      "id": "PET-1008",
+      "name": "Rocky",
+      "species": "Dog",
+      "breed": "Beagle",
+      "age": "2 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Keen nose, loves outdoor trails and playing fetch.",
+      "createdAt": "2026-03-20T12:00:00.000Z"
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "REQ-501",
+      "petId": "PET-1003",
+      "petName": "Milo",
+      "applicantName": "Emily Watson",
+      "applicantEmail": "emily.w@example.com",
+      "applicantPhone": "+1 (555) 234-5678",
+      "status": "Pending",
+      "requestDate": "2026-08-01T15:30:00.000Z"
+    },
+    {
+      "id": "REQ-502",
+      "petId": "PET-1007",
+      "petName": "Daisy",
+      "applicantName": "David Miller",
+      "applicantEmail": "dmiller@example.com",
+      "applicantPhone": "+1 (555) 876-5432",
+      "status": "Pending",
+      "requestDate": "2026-08-03T11:20:00.000Z"
+    },
+    {
+      "id": "REQ-500",
+      "petId": "PET-1002",
+      "petName": "Luna",
+      "applicantName": "Sophia Taylor",
+      "applicantEmail": "sophia.t@example.com",
+      "applicantPhone": "+1 (555) 345-6789",
+      "status": "Approved",
+      "requestDate": "2026-07-15T09:40:00.000Z"
+    }
+  ]
+}
