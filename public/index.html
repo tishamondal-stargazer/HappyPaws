@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HappyPaws - Tisha Mondal</title>
+  
+  <!-- Font Awesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =================================================================== -->
+  <!-- 1. LOGIN SCREEN -->
+  <!-- =================================================================== -->
+  <div id="login-screen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-paw"></i>
+        </div>
+        <h1>HappyPaws - Tisha Mondal</h1>
+        <p>Pet Adoption & Shelter Management System</p>
+      </div>
+
+      <div id="login-error" class="auth-error hidden" style="background: var(--status-danger-bg); color: var(--status-danger); padding: 10px; border-radius: 8px; margin-bottom: 16px;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <span id="login-error-text">Invalid username or password.</span>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-username">Username / Email</label>
+          <div class="input-icon-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="login-username" class="form-control" placeholder="admin@happypaws.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <div class="input-icon-wrapper">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btn-login-submit">
+          <span>Sign In to Sanctuary</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="demo-box">
+        <div>
+          <strong>Admin Login Credentials:</strong><br>
+          <span style="font-size: 12px; opacity: 0.85;">User: admin@happypaws.com | Pass: admin123</span>
+        </div>
+        <button class="demo-btn" id="btn-fill-demo">Autofill</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- 2. MAIN APP LAYOUT (7 MODULES + GLOBAL HEADER BAR) -->
+  <!-- =================================================================== -->
+  <div id="app-screen" class="app-container hidden">
+
+    <!-- Sidebar Navigation (7 Tabs) -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <div>
+          <div class="sidebar-brand-name">HappyPaws</div>
+          <div class="sidebar-brand-sub">Tisha Mondal Sanctuary</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-view="dashboard" id="nav-dashboard">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-view="pets" id="nav-pets">
+          <i class="fa-solid fa-dog"></i>
+          <span>Pets Management</span>
+        </a>
+        <a href="#" class="nav-item" data-view="requests" id="nav-requests">
+          <i class="fa-solid fa-file-signature"></i>
+          <span>Adoption Requests</span>
+        </a>
+        <a href="#" class="nav-item" data-view="medical" id="nav-medical">
+          <i class="fa-solid fa-notes-medical"></i>
+          <span>Medical & Vaccines</span>
+        </a>
+        <a href="#" class="nav-item" data-view="inventory" id="nav-inventory">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Inventory & Supplies</span>
+        </a>
+        <a href="#" class="nav-item" data-view="donations" id="nav-donations">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <span>Donations & Sponsors</span>
+        </a>
+        <a href="#" class="nav-item" data-view="shelter" id="nav-shelter">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Shelter Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar" id="user-avatar">TM</div>
+          <div class="user-info">
+            <div class="user-name" id="user-display-name">Tisha Mondal</div>
+            <div class="user-role" id="user-display-role">Shelter Administrator</div>
+          </div>
+          <button class="btn-logout" id="btn-logout" title="Sign Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-wrapper">
+      
+      <!-- Global Sticky Top Header Bar -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <div class="navbar-title">
+            <h2 id="page-title">HappyPaws - Tisha Mondal</h2>
+          </div>
+          <div class="global-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="global-search-input" class="global-search-input" placeholder="Global search pets, donors...">
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <!-- Light/Dark Mode Switch -->
+          <button class="theme-toggle-btn" id="btn-theme-toggle" title="Toggle Light/Dark Theme">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+          </button>
+
+          <!-- Notification Bell Dropdown -->
+          <div class="notif-wrapper">
+            <button class="notif-btn" id="btn-notif-toggle">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notif-badge" id="notif-count">2</span>
+            </button>
+
+            <div class="notif-dropdown hidden" id="notif-dropdown">
+              <div class="notif-header">
+                <span>Sanctuary Alerts</span>
+                <span style="font-size: 11px; color: var(--primary-600); cursor: pointer;" id="btn-clear-notif">Clear</span>
+              </div>
+              <div id="notif-list">
+                <div class="notif-item">
+                  <strong>Low Stock Alert:</strong> Feline Anti-Flea Drops has only 4 boxes remaining.
+                </div>
+                <div class="notif-item">
+                  <strong>Pending Application:</strong> New adoption request submitted for Milo.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic View Container -->
+      <div class="content-body">
+
+        <!-- ============================================================= -->
+        <!-- MODULE 1: DASHBOARD -->
+        <!-- ============================================================= -->
+        <section id="view-dashboard" class="app-view">
+          
+          <!-- Quick Action Banner -->
+          <div class="banner-card">
+            <div class="banner-content">
+              <h3>HappyPaws - Tisha Mondal Sanctuary</h3>
+              <p>Comprehensive dashboard overview for pet inventory, adoptions, supplies, and medical tracking.</p>
+            </div>
+            <button class="btn-light" id="btn-quick-add-pet">
+              <i class="fa-solid fa-plus"></i>
+              <span>Register New Pet</span>
+            </button>
+          </div>
+
+          <!-- 4 Main Metric Stat Cards -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Total Pets</h3>
+                <div class="stat-number" id="stat-total-pets">0</div>
+              </div>
+              <div class="stat-icon-container emerald">
+                <i class="fa-solid fa-paw"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Total Adoptions</h3>
+                <div class="stat-number" id="stat-total-adoptions">0</div>
+              </div>
+              <div class="stat-icon-container coral">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Pending Requests</h3>
+                <div class="stat-number" id="stat-pending-requests">0</div>
+              </div>
+              <div class="stat-icon-container amber">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-info">
+                <h3>Available Pets</h3>
+                <div class="stat-number" id="stat-available-pets">0</div>
+              </div>
+              <div class="stat-icon-container slate">
+                <i class="fa-solid fa-house-chimney-medical"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Grid: Donut Chart & Activity Feed -->
+          <div class="dashboard-grid-2">
+            
+            <!-- Dynamic SVG Doughnut Chart -->
+            <div class="section-card">
+              <div class="section-header">
+                <h3><i class="fa-solid fa-chart-donut" style="color: var(--primary-600);"></i> Species & Status Distribution</h3>
+              </div>
+              <div class="chart-container-box">
+                <svg class="donut-chart-svg" viewBox="0 0 42 42" id="species-donut-svg">
+                  <!-- Rendered dynamically by JS -->
+                </svg>
+                <div class="chart-legend" id="donut-legend">
+                  <!-- Legend items rendered by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="section-card">
+              <div class="section-header">
+                <h3><i class="fa-solid fa-bolt" style="color: var(--coral-500);"></i> Recent Sanctuary Activity</h3>
+              </div>
+              <div class="activity-list" id="activity-feed-container" style="display: flex; flex-direction: column; gap: 12px;">
+                <!-- Rendered dynamically by JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 2: PETS MANAGEMENT (CRUD) -->
+        <!-- ============================================================= -->
+        <section id="view-pets" class="app-view hidden">
+          
+          <div class="toolbar-header">
+            <div class="search-filter-bar">
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="pet-search-input" class="search-input" placeholder="Search pet name, breed, ID...">
+              </div>
+
+              <select id="species-filter" class="filter-select">
+                <option value="All">All Species</option>
+                <option value="Dog">Dogs</option>
+                <option value="Cat">Cats</option>
+                <option value="Rabbit">Rabbits</option>
+                <option value="Bird">Birds</option>
+              </select>
+
+              <select id="status-filter" class="filter-select">
+                <option value="All">All Statuses</option>
+                <option value="Available">Available</option>
+                <option value="Pending">Pending</option>
+                <option value="Adopted">Adopted</option>
+              </select>
+            </div>
+
+            <button class="btn-add-pet" id="btn-open-add-modal">
+              <i class="fa-solid fa-plus"></i>
+              <span>Add New Pet</span>
+            </button>
+          </div>
+
+          <div class="pets-grid" id="pets-container">
+            <!-- Pet Cards rendered by JS -->
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 3: ADOPTION REQUESTS -->
+        <!-- ============================================================= -->
+        <section id="view-requests" class="app-view hidden">
+          <div class="section-card">
+            <div class="section-header">
+              <h3><i class="fa-solid fa-file-signature" style="color: var(--primary-600);"></i> Adoption Applications</h3>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Request ID</th>
+                    <th>Target Pet</th>
+                    <th>Applicant Name</th>
+                    <th>Contact Email</th>
+                    <th>Submission Date</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="requests-table-body">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 4: MEDICAL & VACCINATION LOGS (NEW) -->
+        <!-- ============================================================= -->
+        <section id="view-medical" class="app-view hidden">
+          <div class="section-card">
+            <div class="section-header">
+              <h3><i class="fa-solid fa-notes-medical" style="color: var(--primary-600);"></i> Veterinary & Vaccine Schedule</h3>
+              <button class="btn-primary" id="btn-open-medical-modal" style="width: auto; padding: 8px 16px; font-size: 13px;">
+                <i class="fa-solid fa-plus"></i> Log Medical Record
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Log ID</th>
+                    <th>Pet Name</th>
+                    <th>Treatment / Vaccine</th>
+                    <th>Veterinarian</th>
+                    <th>Date</th>
+                    <th>Next Due Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="medical-table-body">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 5: INVENTORY & SUPPLIES (NEW) -->
+        <!-- ============================================================= -->
+        <section id="view-inventory" class="app-view hidden">
+          <div class="section-card">
+            <div class="section-header">
+              <h3><i class="fa-solid fa-boxes-stacked" style="color: var(--coral-500);"></i> Shelter Supplies & Stock Tracker</h3>
+              <button class="btn-primary" id="btn-open-inventory-modal" style="width: auto; padding: 8px 16px; font-size: 13px;">
+                <i class="fa-solid fa-plus"></i> Add Item
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Item Code</th>
+                    <th>Item Description</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Reorder Level</th>
+                    <th>Stock Status</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-table-body">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 6: DONATIONS & SPONSORS (NEW) -->
+        <!-- ============================================================= -->
+        <section id="view-donations" class="app-view hidden">
+          <div class="section-card">
+            <div class="section-header">
+              <h3><i class="fa-solid fa-hand-holding-dollar" style="color: var(--amber-500);"></i> Donor Recognition Wall</h3>
+              <button class="btn-primary" id="btn-open-donation-modal" style="width: auto; padding: 8px 16px; font-size: 13px;">
+                <i class="fa-solid fa-plus"></i> Record Donation
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Donation ID</th>
+                    <th>Donor Name</th>
+                    <th>Contribution Amount</th>
+                    <th>Date</th>
+                    <th>Supported Cause</th>
+                    <th>Sponsored Pet</th>
+                  </tr>
+                </thead>
+                <tbody id="donations-table-body">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ============================================================= -->
+        <!-- MODULE 7: SETTINGS / SHELTER PROFILE (NEW) -->
+        <!-- ============================================================= -->
+        <section id="view-shelter" class="app-view hidden">
+          <div class="section-card">
+            <div class="section-header">
+              <h3><i class="fa-solid fa-sliders" style="color: var(--primary-600);"></i> Sanctuary Profile & Administrator Settings</h3>
+            </div>
+
+            <form id="shelter-profile-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="shelter-name-input">Sanctuary Name</label>
+                  <input type="text" id="shelter-name-input" class="form-control form-control-no-icon" value="HappyPaws - Tisha Mondal Sanctuary">
+                </div>
+                <div class="form-group">
+                  <label for="shelter-admin-input">Lead Administrator Name</label>
+                  <input type="text" id="shelter-admin-input" class="form-control form-control-no-icon" value="Tisha Mondal">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="shelter-email-input">Official Contact Email</label>
+                  <input type="email" id="shelter-email-input" class="form-control form-control-no-icon" value="tisha.mondal@happypaws.com">
+                </div>
+                <div class="form-group">
+                  <label for="shelter-phone-input">Contact Phone</label>
+                  <input type="text" id="shelter-phone-input" class="form-control form-control-no-icon" value="+1 (555) 987-6543">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="shelter-address-input">Physical Sanctuary Address</label>
+                <input type="text" id="shelter-address-input" class="form-control form-control-no-icon" value="452 Haven Way, Meadowville">
+              </div>
+
+              <div style="margin-top: 20px;">
+                <button type="submit" class="btn-primary" style="width: auto; padding: 10px 24px;">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Profile Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+
+  <!-- =================================================================== -->
+  <!-- MODAL: ADD / EDIT PET -->
+  <!-- =================================================================== -->
+  <div id="pet-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="pet-modal-title">Add New Pet</h3>
+        <button class="btn-close-modal" id="btn-close-pet-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="pet-form">
+        <div class="modal-body">
+          <input type="hidden" id="form-mode" value="ADD">
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="pet-id-input">Pet ID (Required)</label>
+              <input type="text" id="pet-id-input" class="form-control form-control-no-icon" placeholder="PET-1009" required>
+            </div>
+
+            <div class="form-group">
+              <label for="pet-name-input">Pet Name</label>
+              <input type="text" id="pet-name-input" class="form-control form-control-no-icon" placeholder="e.g. Oliver" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="pet-species-input">Species</label>
+              <select id="pet-species-input" class="form-control form-control-no-icon" required>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Bird">Bird</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pet-breed-input">Breed</label>
+              <input type="text" id="pet-breed-input" class="form-control form-control-no-icon" placeholder="e.g. Golden Retriever" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="pet-age-input">Age</label>
+              <input type="text" id="pet-age-input" class="form-control form-control-no-icon" placeholder="e.g. 2 Years" required>
+            </div>
+
+            <div class="form-group">
+              <label for="pet-gender-input">Gender</label>
+              <select id="pet-gender-input" class="form-control form-control-no-icon" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="pet-status-input">Adoption Status</label>
+              <select id="pet-status-input" class="form-control form-control-no-icon" required>
+                <option value="Available">Available</option>
+                <option value="Pending">Pending</option>
+                <option value="Adopted">Adopted</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; margin-top: 22px;">
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <input type="checkbox" id="pet-vaccinated-input" style="width: 18px; height: 18px; accent-color: var(--primary-600);">
+                <span style="font-size: 13.5px; font-weight: 700; color: var(--text-main);">Vaccinated</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pet-notes-input">Medical / Temperament Notes</label>
+            <textarea id="pet-notes-input" class="form-control form-control-no-icon" rows="3" placeholder="Friendly, vaccinated, microchipped..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-pet-modal">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto; padding: 10px 20px;">
+            <i class="fa-solid fa-floppy-disk"></i> Save Pet Record
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- MODAL: DELETE CONFIRMATION -->
+  <div id="delete-modal" class="modal-overlay hidden">
+    <div class="modal-card" style="max-width: 420px;">
+      <div class="modal-header" style="background-color: var(--status-danger-bg);">
+        <h3 style="color: var(--status-danger);"><i class="fa-solid fa-triangle-exclamation"></i> Delete Pet</h3>
+        <button class="btn-close-modal" id="btn-close-delete-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-body" style="text-align: center; padding: 24px;">
+        <p style="font-size: 15px; font-weight: 700; color: var(--text-main);">Are you sure you want to remove this record?</p>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;" id="delete-pet-name-display">Pet ID: PET-1001</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="btn-cancel-delete">Cancel</button>
+        <button type="button" class="btn-primary" style="background: var(--status-danger); border: none; width: auto; padding: 10px 20px;" id="btn-confirm-delete">
+          <span>Confirm Delete</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Client Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

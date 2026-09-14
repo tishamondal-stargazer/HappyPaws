@@ -1,0 +1,256 @@
+{
+  "users": [
+    {
+      "id": "USR-101",
+      "username": "admin@happypaws.com",
+      "password": "admin123",
+      "name": "Tisha Mondal",
+      "role": "Shelter Administrator"
+    },
+    {
+      "id": "USR-102",
+      "username": "staff@happypaws.com",
+      "password": "staff123",
+      "name": "Alex Rivera",
+      "role": "Care Coordinator"
+    }
+  ],
+  "pets": [
+    {
+      "id": "PET-1001",
+      "name": "Buddy",
+      "species": "Dog",
+      "breed": "Golden Retriever",
+      "age": "2.5 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Available",
+      "notes": "Friendly, playful, loves swimming and retrieving tennis balls.",
+      "createdAt": "2026-06-15T10:30:00.000Z"
+    },
+    {
+      "id": "PET-1002",
+      "name": "Luna",
+      "species": "Cat",
+      "breed": "Siamese",
+      "age": "1 Year",
+      "gender": "Female",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Calm temperament, affection-seeking, gentle with kids.",
+      "createdAt": "2026-05-10T14:20:00.000Z"
+    },
+    {
+      "id": "PET-1003",
+      "name": "Milo",
+      "species": "Dog",
+      "breed": "French Bulldog",
+      "age": "3 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Pending",
+      "notes": "Very energetic, fully house-trained, enjoys short walks.",
+      "createdAt": "2026-07-01T09:15:00.000Z"
+    },
+    {
+      "id": "PET-1004",
+      "name": "Bella",
+      "species": "Cat",
+      "breed": "Maine Coon",
+      "age": "6 Months",
+      "gender": "Female",
+      "vaccinated": false,
+      "adoptionStatus": "Available",
+      "notes": "Fluffy, quiet kitten, scheduled for final vaccine booster next week.",
+      "createdAt": "2026-07-12T11:45:00.000Z"
+    },
+    {
+      "id": "PET-1005",
+      "name": "Charlie",
+      "species": "Rabbit",
+      "breed": "Holland Lop",
+      "age": "1.5 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Available",
+      "notes": "Gentle rabbit, accustomed to indoor roaming and litter box trained.",
+      "createdAt": "2026-07-18T16:00:00.000Z"
+    },
+    {
+      "id": "PET-1006",
+      "name": "Max",
+      "species": "Dog",
+      "breed": "German Shepherd",
+      "age": "4 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Obedient, trained guard dog, adopted by a loving farm family.",
+      "createdAt": "2026-04-02T08:00:00.000Z"
+    },
+    {
+      "id": "PET-1007",
+      "name": "Daisy",
+      "species": "Bird",
+      "breed": "Cockatiel",
+      "age": "8 Months",
+      "gender": "Female",
+      "vaccinated": true,
+      "adoptionStatus": "Pending",
+      "notes": "Whistles melody tunes, social and comfortable handling.",
+      "createdAt": "2026-07-25T13:10:00.000Z"
+    },
+    {
+      "id": "PET-1008",
+      "name": "Rocky",
+      "species": "Dog",
+      "breed": "Beagle",
+      "age": "2 Years",
+      "gender": "Male",
+      "vaccinated": true,
+      "adoptionStatus": "Adopted",
+      "notes": "Keen nose, loves outdoor trails and playing fetch.",
+      "createdAt": "2026-03-20T12:00:00.000Z"
+    }
+  ],
+  "adoptions": [
+    {
+      "id": "REQ-501",
+      "petId": "PET-1003",
+      "petName": "Milo",
+      "applicantName": "Emily Watson",
+      "applicantEmail": "emily.w@example.com",
+      "applicantPhone": "+1 (555) 234-5678",
+      "status": "Pending",
+      "requestDate": "2026-08-01T15:30:00.000Z"
+    },
+    {
+      "id": "REQ-502",
+      "petId": "PET-1007",
+      "petName": "Daisy",
+      "applicantName": "David Miller",
+      "applicantEmail": "dmiller@example.com",
+      "applicantPhone": "+1 (555) 876-5432",
+      "status": "Pending",
+      "requestDate": "2026-08-03T11:20:00.000Z"
+    },
+    {
+      "id": "REQ-500",
+      "petId": "PET-1002",
+      "petName": "Luna",
+      "applicantName": "Sophia Taylor",
+      "applicantEmail": "sophia.t@example.com",
+      "applicantPhone": "+1 (555) 345-6789",
+      "status": "Approved",
+      "requestDate": "2026-07-15T09:40:00.000Z"
+    }
+  ],
+  "medicalLogs": [
+    {
+      "id": "MED-301",
+      "petId": "PET-1001",
+      "petName": "Buddy",
+      "treatment": "Rabies & DHPP Booster",
+      "veterinarian": "Dr. Aris Thorne",
+      "date": "2026-08-10",
+      "nextDueDate": "2027-08-10",
+      "status": "Completed",
+      "notes": "Healthy vital signs, weight 31 kg."
+    },
+    {
+      "id": "MED-302",
+      "petId": "PET-1004",
+      "petName": "Bella",
+      "treatment": "Feline Core Vaccine Booster",
+      "veterinarian": "Dr. Sarah Lin",
+      "date": "2026-09-20",
+      "nextDueDate": "2026-09-20",
+      "status": "Scheduled",
+      "notes": "First booster shot scheduled."
+    },
+    {
+      "id": "MED-303",
+      "petId": "PET-1005",
+      "petName": "Charlie",
+      "treatment": "Dental & Ear Inspection",
+      "veterinarian": "Dr. Aris Thorne",
+      "date": "2026-07-28",
+      "nextDueDate": "2027-01-28",
+      "status": "Completed",
+      "notes": "Ears clean, teeth in excellent condition."
+    }
+  ],
+  "inventory": [
+    {
+      "id": "INV-101",
+      "item": "Premium Adult Dog Kibble (20kg)",
+      "category": "Food & Diet",
+      "quantity": 18,
+      "unit": "Bags",
+      "status": "In Stock",
+      "minThreshold": 5
+    },
+    {
+      "id": "INV-102",
+      "item": "Feline Anti-Flea Drops",
+      "category": "Medical",
+      "quantity": 4,
+      "unit": "Boxes",
+      "status": "Low Stock",
+      "minThreshold": 8
+    },
+    {
+      "id": "INV-103",
+      "item": "Chew Toys & Ropes",
+      "category": "Toys & Training",
+      "quantity": 42,
+      "unit": "Items",
+      "status": "In Stock",
+      "minThreshold": 10
+    },
+    {
+      "id": "INV-104",
+      "item": "Sanitary Cat Litter (10kg)",
+      "category": "Hygiene",
+      "quantity": 3,
+      "unit": "Bags",
+      "status": "Low Stock",
+      "minThreshold": 6
+    }
+  ],
+  "donations": [
+    {
+      "id": "DON-801",
+      "donorName": "Elena Rostova",
+      "amount": 250,
+      "date": "2026-09-02",
+      "cause": "Emergency Medical Fund",
+      "sponsoredPet": "Bella"
+    },
+    {
+      "id": "DON-802",
+      "donorName": "Marcus Sterling",
+      "amount": 500,
+      "date": "2026-08-28",
+      "cause": "Nutritional Kibble Supply",
+      "sponsoredPet": "Buddy"
+    },
+    {
+      "id": "DON-803",
+      "donorName": "GreenLeaf Pet Care",
+      "amount": 1200,
+      "date": "2026-08-15",
+      "cause": "Shelter Renovation Sponsorship",
+      "sponsoredPet": "All Shelter Pets"
+    }
+  ],
+  "shelterProfile": {
+    "name": "HappyPaws - Tisha Mondal Sanctuary",
+    "administrator": "Tisha Mondal",
+    "email": "tisha.mondal@happypaws.com",
+    "phone": "+91 9503198711",
+    "address": "452 Haven Way, Meadowville",
+    "capacity": 50,
+    "operatingHours": "Mon-Sat 8:00 AM - 6:00 PM"
+  }
+}
